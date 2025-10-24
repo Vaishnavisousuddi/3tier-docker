@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3-Tier Docker RDS</title>
+</head>
+<body>
+    <h1>Hello from Frontend!</h1>
+    <p>API response from backend:</p>
+    <pre id="api-response">Loading...</pre>
+
+    <script>
+        fetch('http://<EC2_PUBLIC_IP>:5000/')  // Replace with your EC2 public IP
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('api-response').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(err => {
+                document.getElementById('api-response').textContent = 'Error: ' + err;
+            });
+    </script>
+</body>
+</html>
